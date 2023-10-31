@@ -1,4 +1,4 @@
-import type { GatsbyConfig } from "gatsby";
+import type { GatsbyConfig } from 'gatsby';
 
 const config: GatsbyConfig = {
   siteMetadata: {
@@ -11,8 +11,11 @@ const config: GatsbyConfig = {
   plugins: [
     {
       // https://chakra-ui.com/getting-started/gatsby-guide
-      resolve: "@chakra-ui/gatsby-plugin",
-      options: {},
+      resolve: '@chakra-ui/gatsby-plugin',
+      options: {
+        resetCSS: true,
+        portalZIndex: undefined,
+      },
     },
   ],
 };

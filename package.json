@@ -15,8 +15,8 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit",
-    "theme": "chakra-cli tokens path/to/theme.ts",
-    "theme:watch": "chakra-cli tokens path/to/theme.ts --watch"
+    "theme": "chakra-cli tokens ./src/@chakra-ui/gatsby-plugin/theme.ts",
+    "theme:watch": "chakra-cli tokens ./src/@chakra-ui/gatsby-plugin/theme.ts --watch"
   },
   "dependencies": {
     "@chakra-ui/gatsby-plugin": "^3.1.1",
