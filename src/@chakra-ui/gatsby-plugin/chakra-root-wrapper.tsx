@@ -6,7 +6,9 @@ import {
 
 import React, { FC } from 'react';
 import theme from './theme';
+
 import './fonts.css';
+import './clip-path.css';
 
 export const ChakraWrapper: FC<ChakraProviderProps> = ({
   children,

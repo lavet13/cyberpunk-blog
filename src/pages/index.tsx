@@ -1,13 +1,17 @@
 import * as React from 'react';
 import type { HeadFC, PageProps } from 'gatsby';
-import { Box, Button } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
+import MultiContainer from '../components/multi-container';
+import CyberButton from '../components/cyber-button';
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
-    <>
+    <MultiContainer>
       <Box>TEST</Box>
-      <Button>SHIT</Button>
-    </>
+      <CyberButton variant='cyber' size='cyberLg'>
+        SHIT
+      </CyberButton>
+    </MultiContainer>
   );
 };
 
