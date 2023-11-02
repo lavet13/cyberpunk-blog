@@ -1,6 +1,7 @@
 import { createMultiStyleConfigHelpers, defineStyle } from '@chakra-ui/react';
 
 import InnerContainerStyles from './container';
+
 import {
   percentageWidths,
   variantGhost,

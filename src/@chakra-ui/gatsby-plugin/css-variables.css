@@ -1,16 +1,22 @@
 :root {
+  --shimmy-distance: 5;
+  --primary-lightness: 50;
+  --shadow-primary-hue: 180;
+  --shadow-secondary-hue: 60;
+  --label-size: 9px;
+  --border: 4px;
+
   --clip: polygon(
-      0 0,
-      100% 0,
-      100% 100%,
-      95% 100%,
-      95% 90%,
-      85% 90%,
-      85% 100%,
-      8% 100%,
-      0 70%
-    )
-    `;
+    0 0,
+    100% 0,
+    100% 100%,
+    95% 100%,
+    95% 90%,
+    85% 90%,
+    85% 100%,
+    8% 100%,
+    0 70%
+  );
   --clip-one: polygon(
     0 2%,
     100% 2%,

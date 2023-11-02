@@ -22,6 +22,7 @@ const theme = extendTheme({
   fonts: {
     body: `"Refinery", ${base.fonts?.body}`,
     heading: `"Refinery", ${base.fonts?.heading}`,
+    mono: `"Refinery", ${base.fonts?.mono}`,
   },
   semanticTokens: {
     colors: {

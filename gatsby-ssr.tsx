@@ -24,6 +24,42 @@ export const onRenderBody = ({ setPreBodyComponents, setHeadComponents }) => {
       crossOrigin='anonymous'
       key='refinery25Regular'
     />,
+
+    <link
+      rel='preload'
+      href='/fonts/BlenderProMedium.woff'
+      as='font'
+      type='font/woff'
+      crossOrigin='anonymous'
+      key='blenderProMedium'
+    />,
+
+    <link
+      rel='preload'
+      href='/fonts/BlenderProBold.woff'
+      as='font'
+      type='font/woff'
+      crossOrigin='anonymous'
+      key='blenderProBold'
+    />,
+
+    <link
+      rel='preload'
+      href='/fonts/BlenderProBook.woff'
+      as='font'
+      type='font/woff'
+      crossOrigin='anonymous'
+      key='blenderProBook'
+    />,
+
+    <link
+      rel='preload'
+      href='/fonts/BlenderProHeavy.woff'
+      as='font'
+      type='font/woff'
+      crossOrigin='anonymous'
+      key='blenderProHeavy'
+    />,
   ]);
 };
 

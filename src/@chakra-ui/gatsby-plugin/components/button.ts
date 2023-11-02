@@ -1,81 +1,82 @@
-import {
-  defineStyleConfig,
-  createMultiStyleConfigHelpers,
-} from '@chakra-ui/react';
+import { createMultiStyleConfigHelpers, defineStyle } from '@chakra-ui/react';
+import { mode } from '@chakra-ui/theme-tools';
+import { variantCyberButton } from '../utils';
 
 const helpers = createMultiStyleConfigHelpers(['outer', 'glitch', 'tag']);
 
-const Button = defineStyleConfig({
-  baseStyle: {
-    outer: {},
-  },
+const Button = helpers.defineMultiStyleConfig({
+  baseStyle: defineStyle(props => ({
+    outer: variantCyberButton(props),
+
+    glitch: {
+      display: 'none',
+
+      position: 'absolute',
+      top: `calc(var(--border) * -1)`,
+      left: `calc(var(--border) * -1)`,
+      right: `calc(var(--border) * -1)`,
+      bottom: `calc(var(--border) * -1)`,
+      background: 'shadow-primary',
+      textShadow: `2px 2px var(--chakra-colors-shadow-primary), -2px -2px var(--chakra-colors-shadow-secondary)`,
+      clipPath: `var(--clip)`,
+
+      _groupHover: {
+        display: 'block',
+      },
+
+      _before: {
+        content: `""`,
+
+        position: 'absolute',
+
+        top: `calc(var(--border) * 1)`,
+        right: `calc(var(--border) * 1)`,
+        left: `calc(var(--border) * 1)`,
+        bottom: `calc(var(--border) * 1)`,
+
+        clipPath: `var(--clip)`,
+        background: 'primary',
+
+        zIndex: -1,
+      },
+    },
+
+    tag: {
+      position: 'absolute',
+      padding: `1px 4px`,
+      letterSpacing: `1px`,
+      lineHeight: 1,
+      bottom: `-5%`,
+      right: '5%',
+      color: mode('#000', '#fff')(props),
+      fontSize: `var(--label-size)`,
+      fontFamily: 'BlenderPro',
+      fontWeight: 900,
+    },
+  })),
 
   sizes: {
     cyberLg: {
       outer: {
-        fontSize: '1.625rem',
-        height: '4.6875rem',
+        fontSize: '26px',
+        fontWeight: 700,
+        height: '75px',
+        minW: '300px',
+        lineHeight: '75px',
       },
     },
   },
 
   variants: {
     cyber: {
-      outer: {
-        position: 'relative',
-
-        fontFamily: 'Refinery',
-        color: 'white',
-        background: 'transparent',
-        outline: 'transparent',
-        textTransform: 'uppercase',
-        minW: '18.75rem',
-        lineHeight: '4.6875rem',
-        border: 'none',
-
-        transition: 'background 0.2s',
-
-        _after: {
-          content: `""`,
-
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          clipPath: 'var(--clip)',
-          zIndex: -1,
-
-          background: 'primary',
-        },
-
-        _before: {
-          content: `""`,
-
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          clipPath: 'var(--clip)',
-          zIndex: -1,
-
-          background: 'shadow-primary',
-          transform: `translate(4px, 0)`,
-        },
-
-        _hover: {
-          '--chakra-colors-primary': `hsl(0, 85%, calc(50 * 0.8%))`,
-        },
-
-        _active: {
-          '--chakra-colors-primary': `hsl(0, 85%, calc(50 * 0.6%))`,
-        },
-      },
+      outer: {},
     },
   },
 
-  defaultProps: {},
+  defaultProps: {
+    size: 'cyberLg',
+    colorScheme: 'blue',
+  },
 });
 
 export default Button;
