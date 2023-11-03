@@ -8,7 +8,9 @@ const IndexPage: React.FC<PageProps> = () => {
   return (
     <Flex direction='column' align='center' justify='center' minHeight='100vh'>
       <Box>TEST</Box>
-      <CyberButton>SHIT</CyberButton>
+      <CyberButton colorScheme='purple'>SHIT</CyberButton>
+      <CyberButton colorScheme='red'>SHIT</CyberButton>
+      <CyberButton colorScheme='blue'>SHIT</CyberButton>
     </Flex>
   );
 };

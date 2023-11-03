@@ -3,6 +3,7 @@ import {
   transparentize,
   getColor,
   SystemStyleFunction,
+  cssVar,
 } from '@chakra-ui/theme-tools';
 
 export function percentageWidths(
@@ -120,14 +121,20 @@ export const variantGradient: SystemStyleFunction = props => {
 export const variantCyberButton: SystemStyleFunction = props => {
   const { colorScheme: c } = props;
 
-  let primaryHue = 0;
-
-  if (c === 'red') {
-    primaryHue = 0;
-  }
+  let background = 'primary';
+  let backgroundHover = 'primary-hover';
+  let backgroundActive = 'primary-active';
 
   if (c === 'blue') {
-    primaryHue = 260;
+    background = 'secondary';
+    backgroundHover = 'secondary-hover';
+    backgroundActive = 'secondary-active';
+  }
+
+  if (c === 'purple') {
+    background = 'tertiary';
+    backgroundHover = 'tertiary-hover';
+    backgroundActive = 'tertiary-active';
   }
 
   const styles = {
@@ -166,17 +173,84 @@ export const variantCyberButton: SystemStyleFunction = props => {
       clipPath: 'var(--clip)',
       zIndex: -1,
 
-      background: 'primary',
+      background,
     },
 
     _hover: {
-      '--chakra-colors-primary': `hsl(0, 85%, calc(50 * 0.8%))`,
+      _after: {
+        background: backgroundHover,
+      },
     },
 
     _active: {
-      '--chakra-colors-primary': `hsl(0, 85%, calc(50 * 0.6%))`,
+      _after: {
+        background: backgroundActive,
+      },
     },
   };
 
   return styles;
+};
+
+export const variantCyberGlitchEffect: SystemStyleFunction = props => {
+  const { colorScheme: c } = props;
+
+  let background = 'primary';
+  let backgroundHover = 'primary-hover';
+  let backgroundActive = 'primary-active';
+
+  if (c === 'blue') {
+    background = 'secondary';
+    backgroundHover = 'secondary-hover';
+    backgroundActive = 'secondary-active';
+  }
+
+  if (c === 'purple') {
+    background = 'tertiary';
+    backgroundHover = 'tertiary-hover';
+    backgroundActive = 'tertiary-active';
+  }
+
+  return {
+    display: 'none',
+
+    position: 'absolute',
+    top: `calc(var(--border) * -1)`,
+    left: `calc(var(--border) * -1)`,
+    right: `calc(var(--border) * -1)`,
+    bottom: `calc(var(--border) * -1)`,
+    background: 'shadow-primary',
+    textShadow: `2px 2px var(--chakra-colors-shadow-primary), -2px -2px var(--chakra-colors-shadow-secondary)`,
+    clipPath: `var(--clip)`,
+
+    _groupHover: {
+      display: 'block',
+
+      _before: {
+        background: backgroundHover,
+      },
+    },
+
+    _groupActive: {
+      _before: {
+        background: backgroundActive,
+      },
+    },
+
+    _before: {
+      content: `""`,
+
+      position: 'absolute',
+
+      top: `calc(var(--border) * 1)`,
+      right: `calc(var(--border) * 1)`,
+      left: `calc(var(--border) * 1)`,
+      bottom: `calc(var(--border) * 1)`,
+
+      clipPath: `var(--clip)`,
+      background,
+
+      zIndex: -1,
+    },
+  };
 };

@@ -225,11 +225,11 @@ const animation = keyframes`
 import React, { FC } from 'react';
 
 const CyberButton: FC<ButtonProps> = props => {
-  const { size, variant, children, ...rest } = props;
+  const { size, variant, colorScheme, children, ...rest } = props;
 
-  const styles = useMultiStyleConfig(`Button`, { size, variant });
+  const styles = useMultiStyleConfig(`Button`, { size, variant, colorScheme });
 
-  const glitchAnimation = `${anotherAnimation} 2s infinite`;
+  const glitchAnimation = `${animation} 2s infinite`;
 
   return (
     <Button role='group' __css={{ ...styles.outer }} {...rest}>
