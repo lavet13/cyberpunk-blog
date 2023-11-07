@@ -7,6 +7,9 @@ import colors from './colors';
 import Container from './components/container';
 import CustomContainer from './components/custom-container';
 import Button from './components/button';
+import Nav from './components/nav';
+import HeaderTop from './components/header-top';
+import Logo from './components/logo';
 
 const config: ThemeConfig = {
   initialColorMode: 'dark',
@@ -17,7 +20,7 @@ const theme = extendTheme({
   config,
   breakpoints,
   styles,
-  components: { Container, CustomContainer, Button },
+  components: { Container, CustomContainer, Button, Nav, HeaderTop, Logo },
   colors,
   fonts: {
     body: `"Refinery", ${base.fonts?.body}`,
@@ -32,8 +35,8 @@ const theme = extendTheme({
       },
 
       'chakra-body-bg': {
-        _light: `linear-gradient(90deg, #f5ed00 70%, #e6de00 70%), #fff700`,
-        _dark: `linear-gradient(90deg, #192a56 70%, #14244b 70%), #111111`,
+        _light: `linear-gradient(90deg, #f5ed00 70%, #e6de00 70%)`,
+        _dark: `linear-gradient(90deg, #192a56 70%, #14244b 70%)`,
       },
     },
   },

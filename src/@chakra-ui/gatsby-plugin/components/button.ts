@@ -18,7 +18,7 @@ const Button = helpers.defineMultiStyleConfig({
       bottom: `-5%`,
       right: '5%',
       color: mode('#000', '#fff')(props),
-      fontSize: `var(--label-size)`,
+      fontSize: `9px`,
       fontFamily: 'BlenderPro',
       fontWeight: 900,
     },
@@ -27,11 +27,29 @@ const Button = helpers.defineMultiStyleConfig({
   sizes: {
     cyberLg: {
       outer: {
-        fontSize: '26px',
+        fontSize: 25,
         fontWeight: 700,
-        height: '75px',
-        minW: '300px',
-        lineHeight: '75px',
+        height: '4rem',
+        minW: '14rem',
+        lineHeight: '4rem',
+      },
+      tag: {
+        fontSize: '6px',
+      },
+    },
+
+    cyberSm: {
+      outer: {
+        fontSize: 20,
+        fontWeight: 700,
+        height: '3rem',
+        minW: '13rem',
+        lineHeight: '3rem',
+      },
+
+      tag: {
+        fontSize: '7px',
+        fontFamily: 'Refinery',
       },
     },
   },
@@ -43,7 +61,7 @@ const Button = helpers.defineMultiStyleConfig({
   },
 
   defaultProps: {
-    size: 'cyberLg',
+    size: 'cyberSm',
     colorScheme: 'red',
   },
 });

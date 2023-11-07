@@ -1,6 +1,5 @@
 :root {
   --shimmy-distance: 5;
-  --label-size: 9px;
   --border: 4px;
 
   --clip: polygon(
@@ -91,4 +90,40 @@
     8% 80%,
     0 70%
   );
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  background-color: #f9f002;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-track {
+  display: none;
+}
+
+::-webkit-scrollbar-track-piece {
+  display: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ff003c;
+  border-bottom: 0.01em solid #8ae66e;
+  border-right: 0.01em solid #8ae66e;
+  transition: background 0.9s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #ff9800;
+}
+
+::-webkit-scrollbar-corner {
+  display: none;
+}
+
+::-webkit-resizer {
+  display: none;
 }

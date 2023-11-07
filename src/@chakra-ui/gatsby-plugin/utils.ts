@@ -146,6 +146,7 @@ export const variantCyberButton: SystemStyleFunction = props => {
     textTransform: 'uppercase',
     border: 'none',
     boxShadow: `inset -3px 0 0 var(--chakra-colors-shadow-primary)`,
+    textAlign: 'center',
 
     _before: {
       content: `""`,

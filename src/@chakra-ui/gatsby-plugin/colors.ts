@@ -24,6 +24,9 @@ const colors = defineStyle({
   'shadow-secondary': `hsl(60, 90%, 60%)`,
 
   'cyber-color': `hsl(0, 0%, 100%)`,
+
+  yellow: `#fcee0a`,
+  lightBlue: `#00f0ff`,
 });
 
 export default colors;

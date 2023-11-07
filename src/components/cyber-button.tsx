@@ -5,9 +5,14 @@ import {
   useMultiStyleConfig,
   keyframes,
   usePrefersReducedMotion,
+  LinkProps,
 } from '@chakra-ui/react';
 
-const anotherAnimation = keyframes`
+import { GatsbyLinkProps } from 'gatsby';
+
+import { useLocation } from '@reach/router';
+
+const activeGlitchAnimation = keyframes`
   0% {
         opacity: 1;
         -webkit-transform: translateZ(0);
@@ -224,20 +229,35 @@ const animation = keyframes`
 
 import React, { FC } from 'react';
 
-const CyberButton: FC<ButtonProps> = props => {
-  const { size, variant, colorScheme, children, ...rest } = props;
+const CyberButton: FC<ButtonProps & GatsbyLinkProps<any>> = props => {
+  const { size, variant, colorScheme, children, partiallyActive, to, ...rest } =
+    props;
 
-  const styles = useMultiStyleConfig(`Button`, { size, variant, colorScheme });
+  const location = useLocation();
+
+  const partially = partiallyActive
+    ? location.pathname.startsWith(to)
+    : location.pathname === to;
+
+  const activeColorScheme = partially ? 'blue' : colorScheme;
+
+  const styles = useMultiStyleConfig(`Button`, {
+    size,
+    variant,
+    colorScheme: activeColorScheme,
+  });
 
   const glitchAnimation = `${animation} 2s infinite`;
+  const activeGlitch = `${activeGlitchAnimation} infinite 1.5s cubic-bezier(0.15, 1.05, 0.76, 0.99) backwards`;
 
   return (
-    <Button role='group' __css={{ ...styles.outer }} {...rest}>
+    <Button role='group' __css={{ ...styles.outer }} to={to} {...rest}>
       {children}
       <span aria-hidden>_</span>
       <Box
         aria-hidden
-        animation={glitchAnimation}
+        animation={partially ? activeGlitch : glitchAnimation}
+        display={partially ? 'block' : 'none'}
         as='span'
         __css={{ ...styles.glitch }}
       >

@@ -17,6 +17,16 @@ const config: GatsbyConfig = {
         portalZIndex: undefined,
       },
     },
+    'gatsby-plugin-image',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: `static-images`,
+        path: `${__dirname}/src/assets/images/logo/`,
+      },
+    },
   ],
 };
 
