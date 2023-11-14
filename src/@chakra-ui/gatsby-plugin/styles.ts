@@ -7,11 +7,7 @@ import {
 
 const styles = {
   // same as using defineStyle
-  global: (props: StyleFunctionProps): SystemStyleObject => ({
-    '.inner': {
-      fill: 'red !important',
-    },
-  }),
+  global: (props: StyleFunctionProps): SystemStyleObject => ({}),
 };
 
 export default styles;

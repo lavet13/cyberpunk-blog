@@ -23,9 +23,9 @@ const theme = extendTheme({
   components: { Container, CustomContainer, Button, Nav, HeaderTop, Logo },
   colors,
   fonts: {
-    body: `"Refinery", ${base.fonts?.body}`,
-    heading: `"Refinery", ${base.fonts?.heading}`,
-    mono: `"Refinery", ${base.fonts?.mono}`,
+    body: `"Refinery", "BlenderPro", ${base.fonts?.body}`,
+    heading: `"Refinery", "BlenderPro", ${base.fonts?.heading}`,
+    mono: `"Refinery", "BlenderPro", ${base.fonts?.mono}`,
   },
   semanticTokens: {
     colors: {

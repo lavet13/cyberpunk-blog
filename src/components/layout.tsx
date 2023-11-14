@@ -1,12 +1,22 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import { ButtonGroup, Container, Flex, Spacer, Stack } from '@chakra-ui/react';
+import {
+  ButtonGroup,
+  Container,
+  Flex,
+  Spacer,
+  Stack,
+  Heading,
+} from '@chakra-ui/react';
 import useIsClient from '../hooks/use-is-client';
 import ToggleColorMode from './toggle-mode';
 
 import { Link as GatsbyLink } from 'gatsby';
+
 import CyberButton from './cyber-button';
+
 import CyberpunkLogo from './cyberpunk-logo';
+
 import Nav, {
   NavItem,
   NavLink,
@@ -16,13 +26,17 @@ import Nav, {
   NavSubListItem,
   NavSubListLink,
 } from './nav';
+
 import HeaderTop from './header-top';
+import { MDXProvider } from '@mdx-js/react';
+
+const shortcodes = { Heading };
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {
   const { isClient, key } = useIsClient();
 
   return (
-    <>
+    <MDXProvider components={shortcodes}>
       <HeaderTop>
         <CyberpunkLogo to='/' partiallyActive />
 
@@ -41,6 +55,9 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
             </NavItem>
             <NavItem>
               <NavLink to='/gallery'>Галерея</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink to='/attractions'>Достопримечательности</NavLink>
             </NavItem>
             <NavItem>
               <NavSub>SubList</NavSub>
@@ -84,7 +101,7 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
       </HeaderTop>
 
       <Container>{children}</Container>
-    </>
+    </MDXProvider>
   );
 };
 

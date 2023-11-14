@@ -2,6 +2,10 @@ import type { GatsbyConfig } from 'gatsby';
 
 const config: GatsbyConfig = {
   siteMetadata: {
+    title: 'Вселенная Cyberpunk 2077',
+    description:
+      'Добро пожаловать в мир Cyberpunk 2077, ролевой игры о темном мире будущего от студии CD PROJEKT RED, создавшей серию игр «Ведьмак».',
+    image: '/images/favicons/favicon.png',
     siteUrl: `https://www.yourdomain.tld`,
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
@@ -18,13 +22,48 @@ const config: GatsbyConfig = {
       },
     },
     'gatsby-plugin-image',
-    'gatsby-plugin-sharp',
+    {
+      resolve: 'gatsby-plugin-sharp',
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`, `avif`],
+          placeholder: `blurred`,
+          backgroundColor: `transparent`,
+        },
+      },
+    },
     'gatsby-transformer-sharp',
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1200,
+            },
+          },
+        ],
+      },
+    },
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: [
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 1200,
+            },
+          },
+        ],
+      },
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: `static-images`,
-        path: `${__dirname}/src/assets/images/logo/`,
+        name: `attractions`,
+        path: `${__dirname}/attractions/`,
       },
     },
   ],
