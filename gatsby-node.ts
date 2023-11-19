@@ -1,22 +1,100 @@
 import type { GatsbyNode } from 'gatsby';
 import readingTime from 'reading-time';
-// import path from 'path';
+import slugify from 'limax';
+import { createFilePath } from 'gatsby-source-filesystem';
 
-// export const createPages: GatsbyNode['createPages'] = async ({
-//   actions,
-//   graphql,
-// }) => {
-//   const { createPage } = actions;
-// };
+import path from 'path';
 
-export const onCreateNode: GatsbyNode['onCreateNode'] = ({ node, actions }) => {
+const blogPostTemplate = path.resolve('src/templates/blog-post.tsx');
+const blogListTemplate = path.resolve('src/templates/blog-list.tsx');
+
+export const createPages: GatsbyNode['createPages'] = async ({
+  actions,
+  graphql,
+  reporter,
+}) => {
+  const { createPage } = actions;
+
+  const result = await graphql<Queries.BlogQuery>(`
+    query Blog {
+      allMdx(sort: { frontmatter: { date: DESC } }) {
+        edges {
+          node {
+            id
+            fields {
+              slug
+            }
+          }
+
+          next {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+            }
+          }
+
+          previous {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  if (result.errors) {
+    reporter.panicOnBuild('Error loading MDX result', result.errors);
+  }
+
+  const {
+    allMdx: { edges: attractions },
+  } = result.data as Queries.BlogQuery;
+
+  attractions.forEach(({ node: blog, next, previous }, index) => {
+    const { id, fields } = blog;
+
+    createPage({
+      path: `attractions${fields?.slug}`,
+      component: blogPostTemplate,
+
+      context: {
+        id,
+        previous,
+        next,
+      },
+
+      ownerNodeId: id,
+    });
+  });
+};
+
+export const onCreateNode: GatsbyNode['onCreateNode'] = ({
+  node,
+  actions,
+  getNode,
+}) => {
   const { createNodeField } = actions;
 
   if (node.internal.type === 'Mdx') {
+    const value = createFilePath({ node, getNode });
+    console.log({ value });
+
     createNodeField({
       node,
       name: `timeToRead`,
       value: readingTime(node.body as string),
+    });
+
+    createNodeField({
+      name: `slug`,
+      node,
+      value,
     });
   }
 };

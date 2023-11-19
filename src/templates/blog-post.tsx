@@ -1,18 +1,20 @@
 import React, { FC } from 'react';
 import type { PageProps, HeadFC } from 'gatsby';
-import { graphql } from 'gatsby';
-import SEO from '../../components/seo.component';
+import { graphql, Link as GatsbyLink } from 'gatsby';
+import SEO from '../components/seo.component';
 import { Heading, Text } from '@chakra-ui/react';
 import { ImageDataLike, getImage, GatsbyImage } from 'gatsby-plugin-image';
 
-const AttractionPost: FC<PageProps<Queries.AttractionPostQuery>> = props => {
+const AttractionsTemplate: FC<
+  PageProps<Queries.AttractionPostQuery>
+> = props => {
   const {
     data: { mdx },
     children,
     pageContext,
   } = props;
 
-  console.log({ mdx, pageContext });
+  const { previous, next } = pageContext;
 
   const heroImage = getImage(mdx!.frontmatter!.hero_image as ImageDataLike);
 
@@ -30,12 +32,25 @@ const AttractionPost: FC<PageProps<Queries.AttractionPostQuery>> = props => {
       )}
 
       <Text fontSize='2xl'>{mdx?.frontmatter?.date}</Text>
+
       {children}
+
+      {previous && (
+        <GatsbyLink to={`/attractions${previous.fields.slug}`} rel='prev'>
+          ← {previous.frontmatter.title}
+        </GatsbyLink>
+      )}
+
+      {next && (
+        <GatsbyLink to={`/attractions${next.fields.slug}`} rel='prev'>
+          {next.frontmatter.title} →
+        </GatsbyLink>
+      )}
     </>
   );
 };
 
-export default AttractionPost;
+export default AttractionsTemplate;
 
 export const query = graphql`
   query AttractionPost($id: String) {

@@ -11,7 +11,7 @@ const AttractionsPage: FC<PageProps<Queries.AttractionsIndexQuery>> = props => {
 
   return nodes.map(node => (
     <Box key={node.id} as='article'>
-      <GatsbyLink to={`/attractions/${node.frontmatter?.slug}`}>
+      <GatsbyLink to={`/attractions${node.fields?.slug}`}>
         <Heading as='h2' size='2xl'>
           {node.frontmatter?.title}
         </Heading>
@@ -31,11 +31,16 @@ export const query = graphql`
       nodes {
         id
         excerpt
-        frontmatter {
+
+        fields {
           slug
+        }
+
+        frontmatter {
           title
           date(formatString: "MMMM D, YYYY")
         }
+
         parent {
           ... on File {
             modifiedTime(formatString: "MMMM D, YYYY")
