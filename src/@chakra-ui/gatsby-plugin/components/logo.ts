@@ -4,8 +4,8 @@ import { mode } from '@chakra-ui/theme-tools';
 
 const Logo = defineStyleConfig({
   baseStyle: defineStyle(props => ({
-    width: `20rem`,
-    height: `auto`,
+    width: 96,
+    height: 'auto',
 
     transition: `filter 0.1s ease-in-out`,
 
@@ -14,10 +14,7 @@ const Logo = defineStyleConfig({
     zIndex: 1,
 
     _groupHover: {
-      filter: mode(
-        `drop-shadow(0 0 0.75rem #fcee0a)`,
-        `drop-shadow(0 0 0.75rem #52bedc)`
-      )(props),
+      // filter: `drop-shadow(0px 15px 6px #e6de00)`,
     },
   })),
 });

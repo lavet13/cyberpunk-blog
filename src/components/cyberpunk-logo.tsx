@@ -13,6 +13,8 @@ import {
   useStyleConfig,
 } from '@chakra-ui/react';
 
+import Logo from './logo';
+
 interface ICyberpunkLogo extends ImageProps {
   variant?: ThemeTypings['components']['Logo']['variants'];
   size?: ThemeTypings['components']['Logo']['sizes'];
@@ -35,14 +37,13 @@ const CyberpunkLogo: FC<ICyberpunkLogo & GatsbyLinkProps<any>> = props => {
 
   return (
     <GatsbyLink {...(isHome ? {} : { 'data-group': true })} to={to}>
-      {
-        <Image
-          loading='lazy'
-          __css={styles}
-          src={isHome ? '/images/logo/cyberpunk-logo.svg' : active}
-          alt=''
-        />
-      }
+      <Logo __css={styles} isHome={isHome} />
+      {/* <Image
+        loading='lazy'
+        __css={styles}
+        src={isHome ? '/images/logo/cyberpunk-logo.svg' : active}
+        alt=''
+      /> */}
     </GatsbyLink>
   );
 };

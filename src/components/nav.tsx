@@ -1,13 +1,17 @@
 import React, { FC } from 'react';
 
+import type { BoxProps, LinkProps, ThemeTypings } from '@chakra-ui/react';
 import {
   Box,
+  Link,
   createStylesContext,
   useMultiStyleConfig,
 } from '@chakra-ui/react';
-import type { BoxProps, ThemeTypings } from '@chakra-ui/react';
+
 import type { GatsbyLinkProps } from 'gatsby';
 import { Link as GatsbyLink } from 'gatsby';
+
+import { useLocation } from '@reach/router';
 
 interface INavProps extends BoxProps {
   variant?: ThemeTypings['components']['Nav']['variants'];
@@ -21,6 +25,7 @@ const Nav: FC<INavProps> = props => {
   const { variant, size, colorScheme, children, ...rest } = props;
 
   const styles = useMultiStyleConfig(`Nav`, { variant, colorScheme, size });
+  console.log({ styles });
 
   return (
     <Box __css={styles.menu}>
@@ -68,9 +73,26 @@ export const NavItem: FC<BoxProps> = props => {
 };
 
 export const NavLink: FC<BoxProps & GatsbyLinkProps<any>> = props => {
+  const { to } = props;
+
   const styles = useStyles();
 
-  return <Box as={GatsbyLink} __css={styles.link} {...props} />;
+  const location = useLocation();
+
+  const isActive = location.pathname === to;
+  console.log({ to, pathname: location.pathname, location });
+  console.log({ isActive });
+
+  return (
+    <Box
+      as='li'
+      data-group
+      {...(isActive ? { 'data-active': true } : {})}
+      __css={styles.item}
+    >
+      <Box as={GatsbyLink} __css={styles.link} {...props} />
+    </Box>
+  );
 };
 
 export default Nav;

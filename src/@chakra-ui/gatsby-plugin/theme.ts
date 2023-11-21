@@ -12,7 +12,7 @@ import HeaderTop from './components/header-top';
 import Logo from './components/logo';
 
 const config: ThemeConfig = {
-  initialColorMode: 'dark',
+  initialColorMode: 'system',
   useSystemColorMode: true,
 };
 

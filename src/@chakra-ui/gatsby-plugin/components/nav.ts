@@ -95,6 +95,15 @@ const Nav = helpers.defineMultiStyleConfig({
         background: mode('yellow', 'lightBlue')(props),
         color: 'black',
       },
+
+      '&[data-active]': {
+        bg: mode('yellow', 'lightBlue')(props),
+        color: 'black',
+
+        _active: {
+          bg: mode('yellow', 'lightBlue')(props),
+        },
+      },
     },
 
     sub: {

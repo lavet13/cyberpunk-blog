@@ -38,7 +38,7 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <MDXProvider components={shortcodes}>
       <HeaderTop>
-        <CyberpunkLogo to='/' partiallyActive />
+        <CyberpunkLogo to='/' />
 
         <Spacer />
 
@@ -50,15 +50,9 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
             </CyberButton>
           </ButtonGroup> */}
           <Nav>
-            <NavItem>
-              <NavLink to='/'>Главная</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to='/gallery'>Галерея</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to='/attractions'>Достопримечательности</NavLink>
-            </NavItem>
+            <NavLink to='/'>Главная</NavLink>
+            <NavLink to='/gallery/'>Галерея</NavLink>
+            <NavLink to='/attractions/'>Достопримечательности</NavLink>
             <NavItem>
               <NavSub>SubList</NavSub>
               <NavSubList>
