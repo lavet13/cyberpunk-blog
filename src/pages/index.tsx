@@ -1,11 +1,10 @@
 import * as React from 'react';
 import type { HeadFC, PageProps } from 'gatsby';
 import { Box, Flex } from '@chakra-ui/react';
-import MultiContainer from '../components/multi-container';
 import CyberButton from '../components/cyber-button';
 import SEO from '../components/seo.component';
 
-const IndexPage: React.FC<PageProps> = () => {
+const IndexPage: React.FC<PageProps> = props => {
   return (
     <Flex direction='column' align='center' justify='center' minHeight='100vh'>
       <CyberButton to='/' colorScheme='purple'>

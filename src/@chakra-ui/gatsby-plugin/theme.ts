@@ -29,6 +29,26 @@ const theme = extendTheme({
   },
   semanticTokens: {
     colors: {
+      'scrollbar-bg': {
+        _light: '#f9f002',
+        _dark: '#001F3F',
+      },
+
+      'scrollbar-thumb-bg': {
+        _light: '#ff003c',
+        _dark: '#800080',
+      },
+
+      'scrollbar-thumb-hover-bg': {
+        _light: '#ff9800',
+        _dark: '#cc00cc',
+      },
+
+      'scrollbar-border-color': {
+        _light: '#8ae66e',
+        _dark: '#FFD700',
+      },
+
       'chakra-body-text': {
         _light: 'black',
         _dark: 'white',

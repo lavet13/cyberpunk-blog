@@ -72,6 +72,23 @@ export const createPages: GatsbyNode['createPages'] = async ({
       ownerNodeId: id,
     });
   });
+
+  // Creating blog post list pages
+  const attractionsPerPage = 2;
+  const numPages = Math.ceil(attractions.length / attractionsPerPage);
+
+  Array.from({ length: numPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `attractions/` : `attractions/${i + 1}`,
+      component: blogListTemplate,
+      context: {
+        limit: attractionsPerPage,
+        skip: i * attractionsPerPage,
+        numPages,
+        currentPage: i + 1,
+      },
+    });
+  });
 };
 
 export const onCreateNode: GatsbyNode['onCreateNode'] = ({

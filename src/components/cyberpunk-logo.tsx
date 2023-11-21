@@ -23,13 +23,13 @@ const CyberpunkLogo: FC<ICyberpunkLogo & GatsbyLinkProps<any>> = props => {
   const { variant, size, colorScheme, to, ...rest } = props;
 
   const location = useLocation();
+
   const active = useColorModeValue(
     '/images/logo/cyberpunk-logo-active.svg',
     '/images/logo/cyberpunk-logo-dark-active.svg'
   );
 
   const isHome = location.pathname === to;
-  console.log({ isHome });
 
   const styles = useStyleConfig(`Logo`, { variant, size, colorScheme });
 

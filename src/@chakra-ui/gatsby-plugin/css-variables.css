@@ -93,7 +93,7 @@
 }
 
 /* Scrollbar */
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   background-color: #f9f002;
 }
 
@@ -126,4 +126,4 @@
 
 ::-webkit-resizer {
   display: none;
-}
+} */
