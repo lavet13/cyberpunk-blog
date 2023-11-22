@@ -1,6 +1,5 @@
 import type { GatsbyNode } from 'gatsby';
 import readingTime from 'reading-time';
-import slugify from 'limax';
 import { createFilePath } from 'gatsby-source-filesystem';
 
 import path from 'path';
